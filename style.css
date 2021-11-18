@@ -1,0 +1,20 @@
+*{
+    background-color: lightseagreen;
+    color: midnightblue;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+.meat{
+    background-color: lightseagreen;
+    display: flex;
+}
+
+.digits {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.functions{
+    display: flex;
+}

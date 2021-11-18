@@ -1,20 +1,44 @@
-*{
+* {
     background-color: lightseagreen;
     color: midnightblue;
     font-family:Verdana, Geneva, Tahoma, sans-serif ;
 }
 
-.meat{
+button {
+    background-color: lightgoldenrodyellow;
+    border: goldenrod;
+    border-style: double;
+    border-radius: 20px;
+    height: 100px;
+    width: 100px;
+}
+
+.heading {
+    font-size: xx-large;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.meat {
     background-color: lightseagreen;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .digits {
-    display: flex;
+    flex: 1;
+    max-width: 400px;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
 }
 
 .functions{
+    flex: 1;
+    max-height: 500px;
     display: flex;
+    flex-direction: column;
 }

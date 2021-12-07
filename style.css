@@ -8,7 +8,7 @@ button {
     background-color: lightgoldenrodyellow;
     border: goldenrod;
     border-style: double;
-    border-radius: 20px;
+    border-radius: 30px;
     height: 100px;
     width: 100px;
 }
@@ -23,12 +23,31 @@ button {
 }
 
 .meat {
+    border-style: solid;
     background-color: lightseagreen;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    max-width: 430px;
+    margin: 100px;
 }
 
+.mainBox {
+    display: inline-flex;
+}
+
+#clear {
+    width: 100px;
+    background-color: lightcyan;
+}
+#sum {
+    width: 100px;
+}
+
+#plus, #minus, #divide, #multiply, #sum{
+    background-color: lavenderblush;
+}
+/*
 .digits {
     flex: 1;
     max-width: 400px;
@@ -36,9 +55,11 @@ button {
     align-items: center;
 }
 
-.functions{
-    flex: 1;
-    max-height: 500px;
-    display: flex;
-    flex-direction: column;
+
+
+.bigButtons {
+    
+    
 }
+*/
+

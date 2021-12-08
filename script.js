@@ -36,8 +36,8 @@ var operationValue = "";
 
 var btns = document.querySelectorAll("button");
 
-btns.forEach((btn)=>{btn.addEventListener("click", pushValue())});
-
+//btns.forEach((btn)=>{btn.addEventListener("click", pushValue())});
+/*
 function pushValue(e){
     if(e.textContent == "+" || "-" || "/" || "x" || "=" || "CLEAR"){;
         operationValue = e.textContent;
@@ -48,8 +48,20 @@ function pushValue(e){
         }
     };
 }
-
+*/
 //Array.from(btns).forEach(function(div){console.log(div)});
+
+const buttons = document.querySelectorAll(".btn-number");
+
+buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
+    if(displayValue.length = 1 && displayValue[0] === 0){
+        displayValue[0] = btn.textContent;
+        display.innerHTML = displayValue;
+    } else {
+        displayValue.push(btn.textContent)
+        display.innerHTML = displayValue;
+    }
+}))
 
 function add(a, b){
     return a + b;

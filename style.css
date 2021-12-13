@@ -29,7 +29,7 @@ button {
     margin: auto;
 }
 
-#display {
+#display, #operateDisplay {
     background-color: linen;
     width: 100%;
     height: 50px;

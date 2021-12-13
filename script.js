@@ -1,10 +1,11 @@
 function displayScreen(){
     display.innerHTML = displayValue;
+    operateDisplay.innerHTML = operationValue;
 };
 
 
 var displayValue = "0";
-var storedValue;
+var storedValue = "";
 var operationValue = "";
 
 
@@ -15,6 +16,11 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
     const buttonValue= btn.getAttribute("data-num");
     operationValue= buttonValue;
     operateDisplay.innerHTML = operationValue;
+    if (storedValue = null){
+        storedValue = displayValue;
+        displayValue = 0;
+        display.innerHTML = displayValue;
+    }
 }))
 
 buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){

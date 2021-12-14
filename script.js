@@ -4,9 +4,10 @@ function displayScreen(){
 };
 
 
-var displayValue = "0";
+var displayValue = 0;
 var storedValue = "";
 var operationValue = "";
+var answerValue = "";
 
 
 const buttons = document.querySelectorAll(".btn-number");
@@ -16,23 +17,48 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
     const buttonValue= btn.getAttribute("data-num");
     operationValue= buttonValue;
     operateDisplay.innerHTML = operationValue;
-    if (storedValue = null){
+    if (storedValue == ""){
         storedValue = displayValue;
         displayValue = 0;
-        display.innerHTML = displayValue;
+        displayScreen();
     }
-}))
+}));
 
 buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
     const buttonValue= btn.getAttribute("data-num");
-    if(displayValue === "0"){
+    /*if(buttonValue = "."){
+        if(displayValue % 1 == 0)
+        return;
+    };*/
+    if(displayValue === 0){
         displayValue = buttonValue;
         display.innerHTML = displayValue;
     } else {
         displayValue += buttonValue;
         display.innerHTML = displayValue;
+    };
+}));
+
+const sum = document.getElementById("sum");
+
+sum.addEventListener("click", ()=> {
+    displayValue = Number(displayValue);
+    storedValue = Number(storedValue);
+    if (operationValue == "+"){
+        answerValue = add(storedValue, displayValue);
+    } else if (operationValue == "*"){
+        answerValue = multiply(storedValue, displayValue);
+    } else if (operationValue == "-"){
+        answerValue = subtract(storedValue, displayValue);
+    } else if (operationValue == "/"){
+        answerValue = divide(storedValue, displayValue);
     }
-}))
+    operationValue = "";
+    displayValue = 0;
+    storedValue = 0;
+    display.innerHTML = answerValue;
+    operateDisplay.innerHTML = operationValue;
+})
 
 function add(a, b){
     return a + b;
@@ -48,16 +74,4 @@ function divide(a, b) {
 
 function multiply(a,b){
     return a*b;
-};
-
-function operate(num1, num2) {
-    if(operationValue == "add"){
-        return add(num1, num2);
-    } else if (operationValue == "subtract") {
-        return subtract(num1, num2);
-    } else if (operationValue == "divide"){
-        return divide(num1, num2);
-    } else if (operationValue == "multiply"){
-        return multiply(num1, num2);
-    };
 };

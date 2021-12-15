@@ -12,6 +12,7 @@ var answerValue = "";
 
 const buttons = document.querySelectorAll(".btn-number");
 const operations = document.querySelectorAll(".btn-operator");
+const decimal = document.getElementById("decimal");
 
 operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDisplay(e){
     const buttonValue= btn.getAttribute("data-num");
@@ -26,10 +27,6 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
 
 buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
     const buttonValue= btn.getAttribute("data-num");
-    /*if(buttonValue = "."){
-        if(displayValue % 1 == 0)
-        return;
-    };*/
     if(displayValue === 0){
         displayValue = buttonValue;
         display.innerHTML = displayValue;
@@ -38,6 +35,16 @@ buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
         display.innerHTML = displayValue;
     };
 }));
+
+decimal.addEventListener("click", () => {
+    const buttonValue = decimal.getAttribute("data-num");
+    if(displayValue - Math.floor(displayValue) > 0){
+        return;
+    } else {
+        displayValue += buttonValue;
+        display.innerHTML = displayValue;
+    }
+});
 
 const sum = document.getElementById("sum");
 
@@ -58,7 +65,19 @@ sum.addEventListener("click", ()=> {
     storedValue = 0;
     display.innerHTML = answerValue;
     operateDisplay.innerHTML = operationValue;
-})
+});
+
+const clear = document.getElementById("clear");
+
+clear.addEventListener("click", ()=> {
+    if(storedValue != ""){
+        
+    }
+    displayValue = 0;
+    storedValue = "";
+    operationValue = "";
+    displayScreen();
+});
 
 function add(a, b){
     return a + b;

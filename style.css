@@ -48,7 +48,7 @@ button {
     display: inline-flex;
 }
 
-#clear, #modulo, #plusMinus {
+#clear, #percentage, #plusMinus {
     width: 100px;
     background-color: lightcyan;
 }

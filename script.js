@@ -1,18 +1,20 @@
-function displayScreen(){
-    display.innerHTML = displayValue;
-    operateDisplay.innerHTML = operationValue;
-};
-//I think the basics are done at this point, time to check for bugs/errors/improvemtents.
+const buttons = document.querySelectorAll(".btn-number");
+const operations = document.querySelectorAll(".btn-operator");
+const decimal = document.getElementById("decimal");
+const sum = document.getElementById("sum");
+const clear = document.getElementById("clear");
+const plusMinus = document.getElementById("plusMinus");
+const percent = document.getElementById("percent");
 
 var displayValue = 0;
 var storedValue = "";
 var operationValue = "";
 var answerValue = "";
 
-
-const buttons = document.querySelectorAll(".btn-number");
-const operations = document.querySelectorAll(".btn-operator");
-const decimal = document.getElementById("decimal");
+function displayScreen(){
+    display.innerHTML = displayValue;
+    operateDisplay.innerHTML = operationValue;
+};
 
 operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDisplay(e){
     const buttonValue= btn.getAttribute("data-num");
@@ -28,6 +30,9 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
 buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
     const buttonValue= btn.getAttribute("data-num");
     if(displayValue === 0){
+        displayValue = buttonValue;
+        display.innerHTML = displayValue;
+    } else if (displayValue == answerValue){
         displayValue = buttonValue;
         display.innerHTML = displayValue;
     } else {
@@ -46,11 +51,16 @@ decimal.addEventListener("click", () => {
     }
 });
 
-const sum = document.getElementById("sum");
-
 sum.addEventListener("click", ()=> {
     displayValue = Number(displayValue);
     storedValue = Number(storedValue);
+    if (storedValue == 0 && operationValue == "/") {
+        alert("Please don't try to divide by 0");
+        storedValue = "";
+        displayValue = 0;
+        operationValue = "";
+        displayScreen();
+    };
     if (operationValue == "+"){
         answerValue = add(storedValue, displayValue);
     } else if (operationValue == "*"){
@@ -61,25 +71,22 @@ sum.addEventListener("click", ()=> {
         answerValue = divide(storedValue, displayValue);
     } 
     operationValue = "";
-    displayValue = 0;
+    displayValue = answerValue;
     storedValue = 0;
     display.innerHTML = answerValue;
     operateDisplay.innerHTML = operationValue;
 });
 
-const clear = document.getElementById("clear");
-
 clear.addEventListener("click", ()=> {
     if(storedValue != ""){
-
+//this will be to differentiate between AC and C, eventually.
     }
     displayValue = 0;
     storedValue = "";
     operationValue = "";
+    answerValue = "";
     displayScreen();
 });
-
-const plusMinus = document.getElementById("plusMinus");
 
 plusMinus.addEventListener("click", () => {
     if(displayValue > 0){
@@ -90,8 +97,6 @@ plusMinus.addEventListener("click", () => {
         display.innerHTML = displayValue;
     }
 });
-
-const percent = document.getElementById("percent");
 
 percent.addEventListener("click", () => {
     displayValue = displayValue * 0.01;
@@ -112,4 +117,10 @@ function divide(a, b) {
 
 function multiply(a,b){
     return a*b;
+};
+
+if(displayValue.toString().length >= 19) {
+    console.log(displayValue);
+    displayValue = displayValue.toFixed(10);
+    displayScreen();
 };

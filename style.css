@@ -2,6 +2,7 @@
     background-color: lightseagreen;
     color: midnightblue;
     font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: xx-large;
 }
 
 button {
@@ -48,7 +49,7 @@ button {
     display: inline-flex;
 }
 
-#clear, #percentage, #plusMinus {
+#clear, #percent, #plusMinus {
     width: 100px;
     background-color: lightcyan;
 }

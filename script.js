@@ -10,6 +10,7 @@ var displayValue = 0;
 var storedValue = "";
 var operationValue = "";
 var answerValue = "";
+var decimalDisabled = false;
 
 function displayScreen(){
     display.innerHTML = displayValue;
@@ -20,6 +21,7 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
     const buttonValue= btn.getAttribute("data-num");
     operationValue= buttonValue;
     operateDisplay.innerHTML = operationValue;
+    decimal.disabled = false;
     if (storedValue == ""){
         storedValue = displayValue;
         displayValue = 0;
@@ -44,16 +46,19 @@ buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
 decimal.addEventListener("click", () => {
     const buttonValue = decimal.getAttribute("data-num");
     if(displayValue - Math.floor(displayValue) > 0){
+        console.log(displayValue);
         return;
     } else {
+        decimal.disabled = true;
         displayValue += buttonValue;
         display.innerHTML = displayValue;
-    }
+    };
 });
 
 sum.addEventListener("click", ()=> {
     displayValue = Number(displayValue);
     storedValue = Number(storedValue);
+    decimal.disabled = false;
     if (storedValue == 0 && operationValue == "/") {
         alert("Please don't try to divide by 0");
         storedValue = "";
@@ -85,6 +90,7 @@ clear.addEventListener("click", ()=> {
     storedValue = "";
     operationValue = "";
     answerValue = "";
+    decimal.disabled = false;
     displayScreen();
 });
 
@@ -101,6 +107,7 @@ plusMinus.addEventListener("click", () => {
 percent.addEventListener("click", () => {
     displayValue = displayValue * 0.01;
     display.innerHTML = displayValue;
+    decimal.disabled = false;
 });
 
 function add(a, b){

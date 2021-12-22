@@ -17,11 +17,17 @@ function displayScreen(){
     operateDisplay.innerHTML = operationValue;
 };
 
-operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDisplay(e){
+operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDisplay(){
     const buttonValue= btn.getAttribute("data-num");
-    operationValue= buttonValue;
-    operateDisplay.innerHTML = operationValue;
     decimal.disabled = false;
+    if(operationValue == ""){
+        operationValue = buttonValue;
+        operateDisplay.innerHTML = operationValue; 
+    } else {
+        displayValue = Number(displayValue);
+        storedValue = Number(storedValue);
+        summation(displayValue, storedValue)
+    }
     if (storedValue == ""){
         storedValue = displayValue;
         displayValue = 0;
@@ -29,7 +35,7 @@ operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDi
     }
 }));
 
-buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(e){
+buttons.forEach((btn)=>btn.addEventListener("click", function updateDisplay(){
     const buttonValue= btn.getAttribute("data-num");
     if(displayValue === 0){
         displayValue = buttonValue;
@@ -59,6 +65,10 @@ sum.addEventListener("click", ()=> {
     displayValue = Number(displayValue);
     storedValue = Number(storedValue);
     decimal.disabled = false;
+    summation(displayValue, storedValue)
+});
+
+function summation(a, b){
     if (storedValue == 0 && operationValue == "/") {
         alert("Please don't try to divide by 0");
         storedValue = "";
@@ -80,7 +90,7 @@ sum.addEventListener("click", ()=> {
     storedValue = 0;
     display.innerHTML = answerValue;
     operateDisplay.innerHTML = operationValue;
-});
+}
 
 clear.addEventListener("click", ()=> {
     if(storedValue != ""){

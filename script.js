@@ -69,9 +69,6 @@ sum.addEventListener("click", ()=> {
 });
 
 clear.addEventListener("click", ()=> {
-    if(storedValue != ""){
-//this will be to differentiate between AC and C, eventually.
-    }
     displayValue = 0;
     storedValue = "";
     operationValue = "";
@@ -99,7 +96,7 @@ percent.addEventListener("click", () => {
 
 //computes output based on button history and input
 function summation(a, b){
-    if (storedValue == 0 && operationValue == "/") {
+    if ((storedValue == 0 || displayValue == 0) && operationValue == "/") {
         alert("Please don't try to divide by 0");
         storedValue = "";
         displayValue = 0;
@@ -121,6 +118,7 @@ function summation(a, b){
     display.innerHTML = answerValue;
     operateDisplay.innerHTML = operationValue;
 };
+
 //basic calculator functions
 function add(a, b){
     return a + b;

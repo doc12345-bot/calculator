@@ -62,6 +62,7 @@ decimal.addEventListener("click", () => {
 });
 
 sum.addEventListener("click", ()=> {
+    if(storedValue === ""){return};
     displayValue = Number(displayValue);
     storedValue = Number(storedValue);
     decimal.disabled = false;

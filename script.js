@@ -15,6 +15,7 @@ var decimalDisabled = false;
 function displayScreen(){
     display.innerHTML = displayValue;
     operateDisplay.innerHTML = operationValue;
+    storedValueDisplay.innerHTML = storedValue;
 };
 
 operations.forEach((btn)=>btn.addEventListener("click", function updateOperateDisplay(){

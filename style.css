@@ -9,7 +9,6 @@ button {
     background-color: lightgray;
     height: 100px;
     flex: 1 25%;
-
     border-style:solid;
     border-color: lightgray;
     font-size: 50px;
@@ -48,12 +47,13 @@ button:hover{
     border-color: lightslategrey;
     background-color: lightgrey;
     width: max-content;
+    height: max-content;
     margin: auto;
     border-radius: 20px;
     border-width: 10px;
 }
 
-#display, #operateDisplay {
+#display {
     box-sizing: border-box;
     background-color: lightgrey;
     width: 100%;
@@ -62,6 +62,24 @@ button:hover{
     justify-content: flex-end;
     max-width: 400px;
     border-radius: 5px;
+    font-size: 1.5em;
+}
+
+#values {
+    display: flex;
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
+#operateDisplay, #storedValueDisplay {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    height: 50px;
+    width: 50%;
+    justify-content: flex-end;
+    max-width: 400px;
+    border-radius: 5px;
+    font-size: medium;
 }
 
 .meat {
